@@ -35,7 +35,8 @@ async def transcribe(audio):
     read_file = open(converted_filepath, "rb")
 
     logging.debug("calling whisper")
-    transcription = (await openai.Audio.atranscribe("whisper-1", read_file, language=LANGUAGE))["text"]
+    # , language=LANGUAGE
+    transcription = (await openai.Audio.atranscribe("whisper-1", read_file))["text"]
     logging.info("STT response received from whisper in %s %s", time.time() - start_time, 'seconds')
     logging.info('user prompt: %s', transcription)
 
